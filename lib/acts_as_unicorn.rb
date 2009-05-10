@@ -40,11 +40,6 @@ module ActsAsUnicorn
     #
     # == In your views
     # <%= unicorn_html %>
-    
-    
-class UnicornController < ApplicationController
-  acts_as_unicorn 'OMG UNICORNS', :except => :stupid_not_unicorn_action
-end
     def acts_as_unicorn(*args)
       self.unicorn_options = {:link_text => args.shift} if args.first.is_a?(String)
       after_filter :insert_unicorn_html, (args.first||{})
