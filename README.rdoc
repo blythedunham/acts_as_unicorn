@@ -1,0 +1,36 @@
+
+= acts_as_unicorn
+Cornify your app. Appends a unicorn generator link to the top of the page for
+selected actions
+
+== Args
++link_text+ - the text or html that you want to appear in the link. Defaults to cornify!
++filter_options+ - options like <tt>:only</tt> and <tt>:except</tt> to append to your filter
+== Examples
+Add unicorn generators to all of your actions with link text 'OMG UNICORNS' 
+ class UnicornController
+   acts_as_unicorn 'OMG UNICORNS'
+ end
+
+Add a link with text UNICORN for +my_special_action+
+ acts_as_unicorn 'UNICORN', :only => :my_special_action
+
+Add a unicorn generator to all actions except +non_unicorn+ using the cornify graphic
+ acts_as_unicorn :except => :stupid_not_unicorn_action
+
+=== Custom Unicorn links
+Override the link text to be the action name and UNICORN
+  def unicorn_link_text
+    "#{action_name} UNICORN"
+  end
+Override the unicorn html to be fun
+ def unicorn_html
+   "I LOVE UNICORNS"
+ end
+
+=== In your views
+Don't like unicorn buttons at the top? Add it to your views!
+ <%= unicorn_html %>
+
+
+Copyright (c) 2009 Blythe Dunham, released under the MIT license
